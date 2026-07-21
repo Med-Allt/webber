@@ -1,11 +1,15 @@
 import { ArrowRight } from "lucide-react"
-import { site } from "@/content/site"
+import { getLocale } from "next-intl/server"
+import { getSite } from "@/content/site"
 import { Container } from "./container"
 import { Reveal } from "@/components/motion/reveal"
 import { MagneticButton } from "@/components/motion/magnetic-button"
 import { ShaderFieldLazy } from "@/components/motion/shader-field-lazy"
 
-export function Hero() {
+export async function Hero() {
+  const locale = await getLocale()
+  const site = getSite(locale)
+
   return (
     <section
       id="top"

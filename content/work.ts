@@ -15,7 +15,13 @@
  * Screenshots were captured at 1440x900 @2x and encoded to AVIF at 1600px wide.
  * To refresh one, recapture and re-encode at the same dimensions so the
  * declared width/height stay accurate.
+ *
+ * `blurb`, `meta`, and `image.alt` are translated per locale; `slug`, `title`,
+ * `image.src`/dimensions, and `liveUrl` are facts and stay identical across
+ * locales.
  */
+
+import { routing, type Locale } from "@/i18n/routing"
 
 export type Project = {
   slug: string
@@ -27,47 +33,91 @@ export type Project = {
   testimonial?: { quote: string; author: string; role: string }
 }
 
-export const projects: Project[] = [
-  {
-    slug: "cgs-team",
+type ProjectTranslation = {
+  slug: string
+  blurb: string
+  meta: { scope: string; pages: string; duration?: string }
+  alt: string
+}
+
+const facts = {
+  "cgs-team": {
     title: "CGS-team",
-    blurb:
-      "A custom software studio positioning itself as a technical co-founder. The site carries a broad service range — blockchain, mobile, cloud, AI — across case studies, careers, and regional landing pages without losing its through-line.",
-    meta: { scope: "Brand + Web", pages: "Multi page" },
-    image: {
-      src: "/work/cgs-team.avif",
-      alt: "The CGS-team home page: a light layout headlined “Software solutions for startups and growing businesses”, set beside an illustration of devices and blockchain motifs.",
-      width: 1600,
-      height: 1000,
-    },
+    image: { src: "/work/cgs-team.avif", width: 1600, height: 1000 },
     liveUrl: "https://cgsteam.io/",
   },
-  {
-    slug: "hoverla-soft",
+  "hoverla-soft": {
     title: "Hoverla Soft",
-    blurb:
-      "A product development company building market-ready web applications for startups and enterprises across healthcare, legal, logistics, and fintech. Structured to prove credibility fast: the team, the products shipped, and the way in.",
-    meta: { scope: "Brand + Web", pages: "Multi page" },
-    image: {
-      src: "/work/hoverla-soft.avif",
-      alt: "The Hoverla Soft home page: a dark hero over sculptural black fabric, headlined “Your path to successful product renovation starts here” in white and lime.",
-      width: 1600,
-      height: 1000,
-    },
+    image: { src: "/work/hoverla-soft.avif", width: 1600, height: 1000 },
     liveUrl: "https://hoverlasoft.com/",
   },
-  {
-    slug: "mlynivska-chaika",
+  "mlynivska-chaika": {
     title: "Mlynivska Chaika",
-    blurb:
-      "A full-cycle Ukrainian agribusiness — farming, livestock, orchards, and meat processing across 3,500 hectares, supplying eight branded retail stores. A traditional industry given a clear, modern presence in Ukrainian.",
-    meta: { scope: "Brand + Web", pages: "Multi page" },
-    image: {
-      src: "/work/mlynivska-chaika.avif",
-      alt: "The Mlynivska Chaika home page: a full-bleed photograph of cured sausage in a smokehouse behind the Ukrainian headline “Натуральна продукція” and an amber call to action.",
-      width: 1600,
-      height: 1000,
-    },
+    image: { src: "/work/mlynivska-chaika.avif", width: 1600, height: 1000 },
     liveUrl: "https://www.mlynivska-chaika.com.ua/",
   },
-]
+} as const
+
+const translations: Record<Locale, ProjectTranslation[]> = {
+  is: [
+    {
+      slug: "cgs-team",
+      blurb:
+        "Hugbúnaðarstofa sem staðsetur sig sem tæknilegan meðstofnanda. Síðan nær yfir breitt þjónustusvið — blockchain, farsíma, ský, gervigreind — í gegnum tilviksrannsóknir, störf og svæðisbundnar lendingarsíður án þess að tapa rauða þræðinum.",
+      meta: { scope: "Vörumerki + Vefur", pages: "Margar síður" },
+      alt: "Forsíða CGS-team: ljóst útlit með fyrirsögninni „Software solutions for startups and growing businesses“, við hlið myndskreytingar af tækjum og blockchain-táknum.",
+    },
+    {
+      slug: "hoverla-soft",
+      blurb:
+        "Vöruþróunarfyrirtæki sem byggir markaðstilbúin vefforrit fyrir sprota og stórfyrirtæki í heilbrigðisþjónustu, lögfræði, flutningum og fjártækni. Uppbyggt til að sanna trúverðugleika hratt: teymið, vörurnar sem hafa verið afhentar, og leiðina inn.",
+      meta: { scope: "Vörumerki + Vefur", pages: "Margar síður" },
+      alt: "Forsíða Hoverla Soft: dökk forsíðumynd yfir formuðum svörtum vef, með fyrirsögninni „Your path to successful product renovation starts here“ í hvítu og límónugrænu.",
+    },
+    {
+      slug: "mlynivska-chaika",
+      blurb:
+        "Fullbúið úkraínskt landbúnaðarfyrirtæki — ræktun, búfé, aldingarðar og kjötvinnsla á 3.500 hekturum, sem sér átta merktum smásöluverslunum fyrir vörum. Hefðbundinn iðnaður fær skýra, nútímalega ásýnd á úkraínsku.",
+      meta: { scope: "Vörumerki + Vefur", pages: "Margar síður" },
+      alt: "Forsíða Mlynivska Chaika: heilsíðuljósmynd af reyktu pylsum í reykhúsi á bak við úkraínsku fyrirsögnina „Натуральна продукція“ og gulbrúnan hnapp.",
+    },
+  ],
+  en: [
+    {
+      slug: "cgs-team",
+      blurb:
+        "A custom software studio positioning itself as a technical co-founder. The site carries a broad service range — blockchain, mobile, cloud, AI — across case studies, careers, and regional landing pages without losing its through-line.",
+      meta: { scope: "Brand + Web", pages: "Multi page" },
+      alt: "The CGS-team home page: a light layout headlined “Software solutions for startups and growing businesses”, set beside an illustration of devices and blockchain motifs.",
+    },
+    {
+      slug: "hoverla-soft",
+      blurb:
+        "A product development company building market-ready web applications for startups and enterprises across healthcare, legal, logistics, and fintech. Structured to prove credibility fast: the team, the products shipped, and the way in.",
+      meta: { scope: "Brand + Web", pages: "Multi page" },
+      alt: "The Hoverla Soft home page: a dark hero over sculptural black fabric, headlined “Your path to successful product renovation starts here” in white and lime.",
+    },
+    {
+      slug: "mlynivska-chaika",
+      blurb:
+        "A full-cycle Ukrainian agribusiness — farming, livestock, orchards, and meat processing across 3,500 hectares, supplying eight branded retail stores. A traditional industry given a clear, modern presence in Ukrainian.",
+      meta: { scope: "Brand + Web", pages: "Multi page" },
+      alt: "The Mlynivska Chaika home page: a full-bleed photograph of cured sausage in a smokehouse behind the Ukrainian headline “Натуральна продукція” and an amber call to action.",
+    },
+  ],
+}
+
+export function getProjects(locale: string): Project[] {
+  const list = translations[locale as Locale] ?? translations[routing.defaultLocale]
+  return list.map((t): Project => {
+    const f = facts[t.slug as keyof typeof facts]
+    return {
+      slug: t.slug,
+      title: f.title,
+      blurb: t.blurb,
+      meta: t.meta,
+      liveUrl: f.liveUrl,
+      image: { src: f.image.src, alt: t.alt, width: f.image.width, height: f.image.height },
+    }
+  })
+}

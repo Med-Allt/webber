@@ -1,5 +1,6 @@
-import { faqItems } from "@/content/faq"
-import { site } from "@/content/site"
+import { getLocale, getTranslations } from "next-intl/server"
+import { getFaqItems } from "@/content/faq"
+import { getSite } from "@/content/site"
 import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import {
@@ -9,17 +10,23 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-export function Faq() {
+export async function Faq() {
+  const locale = await getLocale()
+  const faqItems = getFaqItems(locale)
+  const site = getSite(locale)
+  const t = await getTranslations({ locale, namespace: "faq" })
+  const tLabel = await getTranslations({ locale, namespace: "sectionLabels" })
+
   return (
     <section id="faq" className="py-[var(--spacing-section)]">
       <Container className="grid gap-14 md:grid-cols-[1fr_1.15fr] md:gap-20">
         <div>
-          <SectionLabel className="mb-6">questions</SectionLabel>
+          <SectionLabel className="mb-6">{tLabel("questions")}</SectionLabel>
           <h2 className="text-3xl leading-[1.08] font-semibold tracking-[-0.03em] text-balance md:text-5xl">
-            Frequently asked questions
+            {t("heading")}
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted">
-            Anything else, email us at{" "}
+            {t("bodyPrefix")}{" "}
             <a
               href={`mailto:${site.email}`}
               className="text-ink underline underline-offset-4 transition-colors hover:text-accent"

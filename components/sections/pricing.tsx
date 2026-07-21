@@ -1,16 +1,24 @@
 import { Check } from "lucide-react"
-import { packages } from "@/content/pricing"
-import { site } from "@/content/site"
+import { getLocale, getTranslations } from "next-intl/server"
+import { getPackages } from "@/content/pricing"
+import { getSite } from "@/content/site"
 import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import { Reveal } from "@/components/motion/reveal"
 import { cn } from "@/lib/utils"
 
-export function Pricing() {
+export async function Pricing() {
+  const locale = await getLocale()
+  const packages = getPackages(locale)
+  const site = getSite(locale)
+  const t = await getTranslations({ locale, namespace: "pricing" })
+  const tNav = await getTranslations({ locale, namespace: "nav" })
+  const tLabel = await getTranslations({ locale, namespace: "sectionLabels" })
+
   return (
     <section id="pricing" className="py-[var(--spacing-section)]">
       <Container>
-        <SectionLabel className="mb-12">services</SectionLabel>
+        <SectionLabel className="mb-12">{tLabel("services")}</SectionLabel>
 
         <div className="grid items-stretch gap-6 lg:grid-cols-3">
           {packages.map((pkg, i) => (
@@ -29,7 +37,7 @@ export function Pricing() {
                   </h3>
                   {pkg.featured && (
                     <span className="rounded-full bg-accent px-3 py-1 text-[10px] tracking-[0.12em] uppercase">
-                      Most popular
+                      {t("mostPopular")}
                     </span>
                   )}
                 </div>
@@ -88,7 +96,7 @@ export function Pricing() {
                       : "bg-ink text-ground hover:bg-accent"
                   )}
                 >
-                  Book a call
+                  {tNav("bookCall")}
                 </a>
               </div>
             </Reveal>

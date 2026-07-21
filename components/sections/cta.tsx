@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react"
-import { site } from "@/content/site"
+import { getLocale, getTranslations } from "next-intl/server"
+import { getSite } from "@/content/site"
 import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import { ThemeScrollZone } from "@/components/motion/theme-scroll-zone"
@@ -7,7 +8,12 @@ import { MagneticButton } from "@/components/motion/magnetic-button"
 import { ShaderFieldLazy } from "@/components/motion/shader-field-lazy"
 import { LocalTime } from "./local-time"
 
-export function Cta() {
+export async function Cta() {
+  const locale = await getLocale()
+  const site = getSite(locale)
+  const t = await getTranslations({ locale, namespace: "cta" })
+  const tLabel = await getTranslations({ locale, namespace: "sectionLabels" })
+
   return (
     <ThemeScrollZone className="relative isolate overflow-hidden rounded-t-[40px] py-[var(--spacing-section)]">
       <ShaderFieldLazy variant="deep" whenInView className="opacity-90" />
@@ -19,14 +25,14 @@ export function Cta() {
       />
 
       <Container className="relative z-30">
-        <SectionLabel className="mb-12">let it happen</SectionLabel>
+        <SectionLabel className="mb-12">{tLabel("letItHappen")}</SectionLabel>
 
         <h2 className="max-w-[14ch] text-[length:var(--text-display)] leading-[0.95] font-semibold tracking-[-0.035em] text-balance">
-          Ready to build something worth looking at?
+          {t("heading")}
         </h2>
 
         <p className="mt-8 max-w-[52ch] text-base leading-relaxed text-ink-dark/55">
-          Book a free discovery session, or email us at{" "}
+          {t("bodyPrefix")}{" "}
           <a
             href={`mailto:${site.email}`}
             className="text-ink-dark underline underline-offset-4"
@@ -41,7 +47,7 @@ export function Cta() {
             href={site.bookingUrl}
             className="bg-ground text-ink hover:bg-accent hover:text-ground"
           >
-            Book an intro call
+            {site.hero.cta}
             <ArrowRight
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-1"

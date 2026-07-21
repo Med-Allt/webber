@@ -1,17 +1,23 @@
-import { phases } from "@/content/process"
+import { getLocale, getTranslations } from "next-intl/server"
+import { getPhases } from "@/content/process"
 import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import { Reveal } from "@/components/motion/reveal"
 
-export function Process() {
+export async function Process() {
+  const locale = await getLocale()
+  const phases = getPhases(locale)
+  const t = await getTranslations({ locale, namespace: "process" })
+  const tLabel = await getTranslations({ locale, namespace: "sectionLabels" })
+
   return (
     <section id="process" className="py-[var(--spacing-section)]">
       <Container>
-        <SectionLabel className="mb-12">the process</SectionLabel>
+        <SectionLabel className="mb-12">{tLabel("process")}</SectionLabel>
 
         <Reveal>
           <p className="max-w-[22ch] text-3xl leading-[1.08] font-semibold tracking-[-0.03em] text-balance md:text-5xl">
-            Simple and transparent at every step, from zero to live.
+            {t("heading")}
           </p>
         </Reveal>
 
