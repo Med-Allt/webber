@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import type { Project } from "@/content/work"
 import { projects } from "@/content/work"
@@ -8,12 +9,13 @@ import { StickyStack } from "@/components/motion/sticky-stack"
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="rounded-[28px] border border-white/10 bg-[#111110] p-8 md:p-12">
-      <div className="flex flex-wrap items-baseline justify-between gap-4">
+    <article className="grid gap-8 rounded-[28px] border border-white/10 bg-[#111110] p-8 md:grid-cols-2 md:items-center md:gap-12 md:p-12">
+      <div>
         <h3 className="text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
           {project.title}
         </h3>
-        <ul className="flex flex-wrap items-center gap-3 text-xs tracking-[0.12em] text-ink-dark/40 uppercase">
+
+        <ul className="mt-4 flex flex-wrap items-center gap-3 text-xs tracking-[0.12em] text-ink-dark/40 uppercase">
           <li>{project.meta.scope}</li>
           <li aria-hidden="true">/</li>
           <li>{project.meta.pages}</li>
@@ -24,34 +26,32 @@ function ProjectCard({ project }: { project: Project }) {
             </>
           )}
         </ul>
-      </div>
 
-      <p className="mt-6 max-w-[62ch] text-base leading-relaxed text-ink-dark/60">
-        {project.blurb}
-      </p>
+        <p className="mt-6 text-base leading-relaxed text-ink-dark/60">
+          {project.blurb}
+        </p>
 
-      {project.testimonial && (
-        <blockquote className="mt-10 border-t border-white/10 pt-8">
-          <p className="max-w-[62ch] text-lg leading-relaxed text-ink-dark/90">
-            &ldquo;{project.testimonial.quote}&rdquo;
-          </p>
-          <footer className="mt-5 text-sm text-ink-dark/40">
-            <span className="text-ink-dark/70">
-              {project.testimonial.author}
-            </span>
-            {" — "}
-            {project.testimonial.role}
-          </footer>
-        </blockquote>
-      )}
+        {project.testimonial && (
+          <blockquote className="mt-8 border-t border-white/10 pt-6">
+            <p className="text-lg leading-relaxed text-ink-dark/90">
+              &ldquo;{project.testimonial.quote}&rdquo;
+            </p>
+            <footer className="mt-4 text-sm text-ink-dark/40">
+              <span className="text-ink-dark/70">
+                {project.testimonial.author}
+              </span>
+              {" — "}
+              {project.testimonial.role}
+            </footer>
+          </blockquote>
+        )}
 
-      {project.liveUrl && (
-        <div className="mt-10 border-t border-white/10 pt-8">
+        {project.liveUrl && (
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="group/link inline-flex items-center gap-2 text-sm text-ink-dark/70 transition-colors hover:text-accent"
+            className="group/link mt-8 inline-flex items-center gap-2 text-sm text-ink-dark/70 transition-colors hover:text-accent"
           >
             Live link
             <ArrowUpRight
@@ -60,8 +60,19 @@ function ProjectCard({ project }: { project: Project }) {
               className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
             />
           </a>
-        </div>
-      )}
+        )}
+      </div>
+
+      <div className="overflow-hidden rounded-2xl border border-white/10">
+        <Image
+          src={project.image.src}
+          alt={project.image.alt}
+          width={project.image.width}
+          height={project.image.height}
+          sizes="(min-width: 768px) 46vw, 90vw"
+          className="h-auto w-full"
+        />
+      </div>
     </article>
   )
 }
