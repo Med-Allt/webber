@@ -1,16 +1,27 @@
-import { Button } from "@/components/ui/button"
+import { Nav } from "@/components/sections/nav"
+import { Hero } from "@/components/sections/hero"
+import { Trust } from "@/components/sections/trust"
+import { Work } from "@/components/sections/work"
+import { Services } from "@/components/sections/services"
+import { Process } from "@/components/sections/process"
+import { Pricing } from "@/components/sections/pricing"
+import { Faq } from "@/components/sections/faq"
+import { Cta } from "@/components/sections/cta"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-      </div>
-    </div>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Trust />
+        <Work />
+        <Services />
+        <Process />
+        <Pricing />
+        <Faq />
+        <Cta />
+      </main>
+    </>
   )
 }

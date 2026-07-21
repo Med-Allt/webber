@@ -1,0 +1,55 @@
+import type { Project } from "@/content/work"
+import { projects } from "@/content/work"
+import { Container } from "./container"
+import { SectionLabel } from "./section-label"
+import { ThemeScrollZone } from "@/components/motion/theme-scroll-zone"
+import { StickyStack } from "@/components/motion/sticky-stack"
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className="rounded-[28px] border border-white/10 bg-[#111110] p-8 md:p-12">
+      <div className="flex flex-wrap items-baseline justify-between gap-4">
+        <h3 className="text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
+          {project.title}
+        </h3>
+        <ul className="flex flex-wrap items-center gap-3 text-xs tracking-[0.12em] text-ink-dark/40 uppercase">
+          <li>{project.meta.scope}</li>
+          <li aria-hidden="true">/</li>
+          <li>{project.meta.pages}</li>
+          <li aria-hidden="true">/</li>
+          <li>{project.meta.duration}</li>
+        </ul>
+      </div>
+
+      <p className="mt-6 max-w-[62ch] text-base leading-relaxed text-ink-dark/60">
+        {project.blurb}
+      </p>
+
+      <blockquote className="mt-10 border-t border-white/10 pt-8">
+        <p className="max-w-[62ch] text-lg leading-relaxed text-ink-dark/90">
+          &ldquo;{project.testimonial.quote}&rdquo;
+        </p>
+        <footer className="mt-5 text-sm text-ink-dark/40">
+          <span className="text-ink-dark/70">{project.testimonial.author}</span>
+          {" — "}
+          {project.testimonial.role}
+        </footer>
+      </blockquote>
+    </article>
+  )
+}
+
+export function Work() {
+  return (
+    <ThemeScrollZone id="work" className="rounded-t-[40px] py-[var(--spacing-section)]">
+      <Container>
+        <SectionLabel className="mb-12">latest work</SectionLabel>
+        <StickyStack>
+          {projects.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
+        </StickyStack>
+      </Container>
+    </ThemeScrollZone>
+  )
+}
