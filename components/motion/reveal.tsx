@@ -16,15 +16,19 @@ export function Reveal({
 }) {
   const motionOk = useMotionOk()
 
-  if (!motionOk) return <div className={cn(className)}>{children}</div>
-
+  // Always the same element type, so flipping to the static branch after mount
+  // re-renders in place instead of remounting (which would flash the content).
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={motionOk ? { opacity: 0, y: 24 } : false}
+      whileInView={motionOk ? { opacity: 1, y: 0 } : undefined}
       viewport={{ once: true, margin: "-8% 0px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={
+        motionOk
+          ? { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }
+          : { duration: 0 }
+      }
     >
       {children}
     </motion.div>

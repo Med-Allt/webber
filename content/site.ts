@@ -35,5 +35,5 @@ export const site: {
     cta: "Book an intro call",
     trust: "Trusted by teams who ship",
   },
-  clients: ["Northwind", "Cadence", "Halcyon", "Meridian", "Fathom", "Lumen"],
+  clients: ["CGS-team", "Hoverla Soft", "Mlynivska Chaika"],
 }

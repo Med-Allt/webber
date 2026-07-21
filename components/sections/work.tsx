@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react"
 import type { Project } from "@/content/work"
 import { projects } from "@/content/work"
 import { Container } from "./container"
@@ -16,8 +17,12 @@ function ProjectCard({ project }: { project: Project }) {
           <li>{project.meta.scope}</li>
           <li aria-hidden="true">/</li>
           <li>{project.meta.pages}</li>
-          <li aria-hidden="true">/</li>
-          <li>{project.meta.duration}</li>
+          {project.meta.duration && (
+            <>
+              <li aria-hidden="true">/</li>
+              <li>{project.meta.duration}</li>
+            </>
+          )}
         </ul>
       </div>
 
@@ -25,16 +30,38 @@ function ProjectCard({ project }: { project: Project }) {
         {project.blurb}
       </p>
 
-      <blockquote className="mt-10 border-t border-white/10 pt-8">
-        <p className="max-w-[62ch] text-lg leading-relaxed text-ink-dark/90">
-          &ldquo;{project.testimonial.quote}&rdquo;
-        </p>
-        <footer className="mt-5 text-sm text-ink-dark/40">
-          <span className="text-ink-dark/70">{project.testimonial.author}</span>
-          {" — "}
-          {project.testimonial.role}
-        </footer>
-      </blockquote>
+      {project.testimonial && (
+        <blockquote className="mt-10 border-t border-white/10 pt-8">
+          <p className="max-w-[62ch] text-lg leading-relaxed text-ink-dark/90">
+            &ldquo;{project.testimonial.quote}&rdquo;
+          </p>
+          <footer className="mt-5 text-sm text-ink-dark/40">
+            <span className="text-ink-dark/70">
+              {project.testimonial.author}
+            </span>
+            {" — "}
+            {project.testimonial.role}
+          </footer>
+        </blockquote>
+      )}
+
+      {project.liveUrl && (
+        <div className="mt-10 border-t border-white/10 pt-8">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="group/link inline-flex items-center gap-2 text-sm text-ink-dark/70 transition-colors hover:text-accent"
+          >
+            Live link
+            <ArrowUpRight
+              size={15}
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+            />
+          </a>
+        </div>
+      )}
     </article>
   )
 }
