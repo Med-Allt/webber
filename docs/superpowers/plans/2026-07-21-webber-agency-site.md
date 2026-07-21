@@ -784,6 +784,33 @@ git commit -m "feat: add typed placeholder content modules with contract tests"
 
 - [ ] **Step 1: Write the failing tests**
 
+Create `test/motion/use-motion-ok.test.tsx`. This is the gate every other primitive
+depends on, so it is tested directly rather than inferred from rendered output:
+
+```tsx
+import { renderHook } from "@testing-library/react"
+import { describe, expect, it } from "vitest"
+import { setReducedMotion } from "@/vitest.setup"
+import { useMotionOk } from "@/components/motion/use-motion-ok"
+
+describe("useMotionOk", () => {
+  it("allows motion by default", () => {
+    setReducedMotion(false)
+    expect(renderHook(() => useMotionOk()).result.current).toBe(true)
+  })
+
+  it("denies motion when the user prefers reduced motion", () => {
+    setReducedMotion(true)
+    expect(renderHook(() => useMotionOk()).result.current).toBe(false)
+  })
+})
+```
+
+If `useReducedMotion` from `motion/react` proves to memoize the media query across
+renders in jsdom and the second assertion fails, replace the hook body with a direct
+`window.matchMedia("(prefers-reduced-motion: reduce)")` read plus a `change` listener.
+The exported signature must stay `useMotionOk(): boolean` either way.
+
 Create `test/motion/reveal.test.tsx`:
 
 ```tsx
@@ -953,7 +980,7 @@ export function Marquee({ children, speed = 30, className }: MarqueeProps) {
 - [ ] **Step 6: Run the tests**
 
 Run: `npm test -- motion`
-Expected: PASS, 4 tests.
+Expected: PASS, 6 tests.
 
 - [ ] **Step 7: Commit**
 
@@ -2352,13 +2379,23 @@ describe("Page", () => {
     ).toHaveAttribute("href", `mailto:${site.email}`)
   })
 
-  it("renders without motion transforms under reduced motion", () => {
+  it("renders every primitive's static branch under reduced motion", () => {
     setReducedMotion(true)
     const { container } = render(<Page />)
-    const transformed = Array.from(
-      container.querySelectorAll<HTMLElement>("*")
-    ).filter((el) => el.style.transform && el.style.transform !== "none")
-    expect(transformed).toHaveLength(0)
+
+    // Assert the observable consequences of the static branch, not inline
+    // styles — jsdom may never receive inline transforms either way, which
+    // would make a transform assertion pass vacuously.
+    expect(container.querySelector(".sticky")).toBeNull()
+    expect(container.querySelector(".md\\:sticky")).toBeNull()
+
+    // The marquee duplicates its children only when animating.
+    expect(screen.getAllByText(site.clients[0])).toHaveLength(1)
+
+    // All content still renders.
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      site.hero.headline
+    )
     setReducedMotion(false)
   })
 })
