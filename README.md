@@ -1,21 +1,17 @@
-# Next.js template
+# Webber
 
-This is a Next.js template with shadcn/ui.
+A single-page marketing site for a web design, branding, and development agency built with modern web technologies.
 
-## Adding components
+## Stack
 
-To add components to your app, run the following command:
+- Next.js
+- Tailwind CSS v4
+- shadcn/ui on Base UI
+- Motion
+- TypeScript
 
-```bash
-npx shadcn@latest add button
-```
+## Commands
 
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
-```
+- `npm run dev` — Start the development server
+- `npm run build` — Build for production
+- `npm test` — Run tests
