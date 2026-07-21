@@ -14,4 +14,3 @@ A single-page marketing site for a web design, branding, and development agency 
 
 - `npm run dev` — Start the development server
 - `npm run build` — Build for production
-- `npm test` — Run tests

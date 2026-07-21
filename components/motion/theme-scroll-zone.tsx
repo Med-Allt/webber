@@ -17,6 +17,7 @@ export function ThemeScrollZone({
   return (
     <section
       id={id}
+      data-theme-zone="dark"
       className={cn("bg-ground-dark text-ink-dark", className)}
     >
       {children}

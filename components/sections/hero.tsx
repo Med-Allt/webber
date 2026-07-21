@@ -3,16 +3,28 @@ import { site } from "@/content/site"
 import { Container } from "./container"
 import { Reveal } from "@/components/motion/reveal"
 import { MagneticButton } from "@/components/motion/magnetic-button"
+import { ShaderFieldLazy } from "@/components/motion/shader-field-lazy"
 
 export function Hero() {
   return (
-    <section id="top" className="relative pt-40 pb-20 md:pt-52 md:pb-28">
-      {/* Soft radial lift behind the headline. */}
+    <section
+      id="top"
+      className="relative isolate min-h-svh overflow-hidden pt-40 pb-20 md:pt-52 md:pb-28"
+    >
+      {/* Static fallback that also underpaints the shader while it boots. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(196,81,42,0.07),transparent_70%)]"
       />
-      <Container className="relative flex flex-col items-center text-center">
+
+      <ShaderFieldLazy variant="hero" />
+
+      {/* Keeps the headline legible over the shader's brighter passages. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(ellipse_55%_45%_at_50%_45%,rgba(250,250,249,0.72),transparent_75%)]"
+      />
+      <Container className="relative z-30 flex flex-col items-center text-center">
         <Reveal>
           <div
             aria-hidden="true"

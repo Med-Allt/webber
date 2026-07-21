@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 export function Nav() {
   const [scrolled, setScrolled] = React.useState(false)
   const [open, setOpen] = React.useState(false)
+  const [overDark, setOverDark] = React.useState(false)
   const toggleRef = React.useRef<HTMLButtonElement>(null)
 
   React.useEffect(() => {
@@ -16,6 +17,32 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  // Invert the bar while it overlaps a dark zone, otherwise the light
+  // translucent background reads as a grey slab over the dark sections.
+  React.useEffect(() => {
+    const zones = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-theme-zone="dark"]')
+    )
+    if (zones.length === 0) return
+
+    const check = () => {
+      const probe = 40 // just below the bar's vertical midpoint
+      setOverDark(
+        zones.some((z) => {
+          const r = z.getBoundingClientRect()
+          return r.top <= probe && r.bottom >= probe
+        })
+      )
+    }
+    check()
+    window.addEventListener("scroll", check, { passive: true })
+    window.addEventListener("resize", check)
+    return () => {
+      window.removeEventListener("scroll", check)
+      window.removeEventListener("resize", check)
+    }
   }, [])
 
   React.useEffect(() => {
@@ -34,8 +61,12 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled && "border-b border-hairline bg-ground/70 backdrop-blur-xl"
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+        overDark && "text-ink-dark",
+        scrolled &&
+          (overDark
+            ? "border-b border-white/10 bg-ground-dark/60 backdrop-blur-xl"
+            : "border-b border-hairline bg-ground/70 backdrop-blur-xl")
       )}
     >
       <Container className="flex h-20 items-center justify-between">
@@ -49,14 +80,22 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted transition-colors hover:text-ink"
+              className={cn(
+                "text-sm transition-colors",
+                overDark
+                  ? "text-ink-dark/60 hover:text-ink-dark"
+                  : "text-muted hover:text-ink"
+              )}
             >
               {l.label}
             </a>
           ))}
           <a
             href={site.bookingUrl}
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-ground transition-colors hover:bg-accent"
+            className={cn(
+              "rounded-full px-5 py-2.5 text-sm font-medium transition-colors hover:bg-accent hover:text-ground",
+              overDark ? "bg-ground text-ink" : "bg-ink text-ground"
+            )}
           >
             Book a call
           </a>

@@ -4,11 +4,21 @@ import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import { ThemeScrollZone } from "@/components/motion/theme-scroll-zone"
 import { MagneticButton } from "@/components/motion/magnetic-button"
+import { ShaderFieldLazy } from "@/components/motion/shader-field-lazy"
+import { LocalTime } from "./local-time"
 
 export function Cta() {
   return (
-    <ThemeScrollZone className="rounded-t-[40px] py-[var(--spacing-section)]">
-      <Container>
+    <ThemeScrollZone className="relative isolate overflow-hidden rounded-t-[40px] py-[var(--spacing-section)]">
+      <ShaderFieldLazy variant="deep" whenInView className="opacity-90" />
+
+      {/* Holds contrast for the footer text over the shader. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(to_right,rgba(10,10,10,0.82),rgba(10,10,10,0.12))]"
+      />
+
+      <Container className="relative z-30">
         <SectionLabel className="mb-12">let it happen</SectionLabel>
 
         <h2 className="max-w-[14ch] text-[length:var(--text-display)] leading-[0.95] font-semibold tracking-[-0.035em] text-balance">
@@ -40,9 +50,10 @@ export function Cta() {
         </div>
 
         <footer className="mt-28 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8 text-sm text-ink-dark/40">
-          <p>
-            © {site.brand}, 2026
-          </p>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+            <p>© {site.brand}, 2026</p>
+            <LocalTime className="flex items-center" />
+          </div>
           <ul className="flex gap-6">
             {site.socials.map((s) => (
               <li key={s.label}>
