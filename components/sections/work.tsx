@@ -11,16 +11,25 @@ import { StickyStack } from "@/components/motion/sticky-stack"
 function ProjectCard({
   project,
   liveLinkLabel,
+  inProgressLabel,
 }: {
   project: Project
   liveLinkLabel: string
+  inProgressLabel: string
 }) {
   return (
     <article className="grid gap-8 rounded-[28px] border border-white/10 bg-[#111110] p-8 md:grid-cols-2 md:items-center md:gap-12 md:p-12">
       <div>
-        <h3 className="text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
-          {project.title}
-        </h3>
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
+            {project.title}
+          </h3>
+          {project.inProgress && (
+            <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold tracking-[0.06em] text-ground uppercase">
+              {inProgressLabel}
+            </span>
+          )}
+        </div>
 
         <ul className="mt-4 flex flex-wrap items-center gap-3 text-xs tracking-[0.12em] text-ink-dark/40 uppercase">
           <li>{project.meta.scope}</li>
@@ -96,7 +105,12 @@ export async function Work() {
         <SectionLabel className="mb-12">{tLabel("latestWork")}</SectionLabel>
         <StickyStack>
           {projects.map((p) => (
-            <ProjectCard key={p.slug} project={p} liveLinkLabel={t("liveLink")} />
+            <ProjectCard
+              key={p.slug}
+              project={p}
+              liveLinkLabel={t("liveLink")}
+              inProgressLabel={t("inProgress")}
+            />
           ))}
         </StickyStack>
       </Container>

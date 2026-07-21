@@ -12,7 +12,6 @@
   "sectionLabels": {
     "letItHappen": "let it happen",
     "questions": "questions",
-    "services": "services",
     "process": "the process",
     "whatWeDo": "what we do",
     "latestWork": "latest work"
@@ -25,14 +24,12 @@
     "heading": "Frequently asked questions",
     "bodyPrefix": "Anything else, email us at"
   },
-  "pricing": {
-    "mostPopular": "Most popular"
-  },
   "process": {
     "heading": "Simple and transparent at every step, from zero to live."
   },
   "work": {
-    "liveLink": "Live link"
+    "liveLink": "Live link",
+    "inProgress": "In Progress"
   },
   "localTime": {
     "location": "London"

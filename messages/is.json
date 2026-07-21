@@ -12,7 +12,6 @@
   "sectionLabels": {
     "letItHappen": "látum þetta gerast",
     "questions": "spurningar",
-    "services": "þjónusta",
     "process": "ferlið",
     "whatWeDo": "það sem við gerum",
     "latestWork": "nýleg verkefni"
@@ -25,14 +24,12 @@
     "heading": "Algengar spurningar",
     "bodyPrefix": "Eitthvað annað? Sendu okkur tölvupóst á"
   },
-  "pricing": {
-    "mostPopular": "Vinsælast"
-  },
   "process": {
     "heading": "Einfalt og gagnsætt í hverju skrefi, frá byrjun til birtingar."
   },
   "work": {
-    "liveLink": "Skoða síðu"
+    "liveLink": "Skoða síðu",
+    "inProgress": "Í vinnslu"
   },
   "localTime": {
     "location": "London"
