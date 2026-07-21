@@ -32,10 +32,10 @@ const site: Record<Locale, SiteContent> = {
     email: "hey@webber.studio",
     bookingUrl: "https://cal.com/webber/intro",
     navLinks: [
-      { label: "Vinna", href: "#work" },
+      { label: "Heim", href: "#top" },
+      { label: "Um Okkur", href: "#process" },
       { label: "Þjónusta", href: "#services" },
-      { label: "Ferli", href: "#process" },
-      { label: "Spurningar", href: "#faq" },
+      { label: "Verkefnin Okkar", href: "#work" },
     ],
     socials,
     hero: {
@@ -51,10 +51,10 @@ const site: Record<Locale, SiteContent> = {
     email: "hey@webber.studio",
     bookingUrl: "https://cal.com/webber/intro",
     navLinks: [
-      { label: "Work", href: "#work" },
+      { label: "Home", href: "#top" },
+      { label: "About Us", href: "#process" },
       { label: "Services", href: "#services" },
-      { label: "Process", href: "#process" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Our Work", href: "#work" },
     ],
     socials,
     hero: {
