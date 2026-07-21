@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "title": "Webber — Vörumerki, vefhönnun og þróun",
+    "description": "Webber er hönnunar- og þróunarstofa sem byggir vörumerki og vefsíður sem vekja athygli og skila árangri."
+  },
+  "nav": {
+    "bookCall": "Bóka fund",
+    "openMenu": "Opna valmynd",
+    "closeMenu": "Loka valmynd",
+    "menuLabel": "Valmynd"
+  },
+  "sectionLabels": {
+    "letItHappen": "látum þetta gerast",
+    "questions": "spurningar",
+    "services": "þjónusta",
+    "process": "ferlið",
+    "whatWeDo": "það sem við gerum",
+    "latestWork": "nýleg verkefni"
+  },
+  "cta": {
+    "heading": "Eigum við að byggja eitthvað sem er þess virði að skoða?",
+    "bodyPrefix": "Bókaðu frítt kynningarsamtal, eða sendu okkur tölvupóst á"
+  },
+  "faq": {
+    "heading": "Algengar spurningar",
+    "bodyPrefix": "Eitthvað annað? Sendu okkur tölvupóst á"
+  },
+  "pricing": {
+    "mostPopular": "Vinsælast"
+  },
+  "process": {
+    "heading": "Einfalt og gagnsætt í hverju skrefi, frá byrjun til birtingar."
+  },
+  "work": {
+    "liveLink": "Skoða síðu"
+  },
+  "localTime": {
+    "location": "London"
+  }
+}

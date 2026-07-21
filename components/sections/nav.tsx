@@ -2,11 +2,16 @@
 
 import * as React from "react"
 import { Menu, X } from "lucide-react"
-import { site } from "@/content/site"
+import { useLocale, useTranslations } from "next-intl"
+import { getSite } from "@/content/site"
 import { Container } from "./container"
+import { LanguageSwitcher } from "./language-switcher"
 import { cn } from "@/lib/utils"
 
 export function Nav() {
+  const locale = useLocale()
+  const site = getSite(locale)
+  const t = useTranslations("nav")
   const [scrolled, setScrolled] = React.useState(false)
   const [open, setOpen] = React.useState(false)
   const [overDark, setOverDark] = React.useState(false)
@@ -90,6 +95,9 @@ export function Nav() {
               {l.label}
             </a>
           ))}
+          <LanguageSwitcher
+            className={overDark ? "text-ink-dark/60" : "text-muted"}
+          />
           <a
             href={site.bookingUrl}
             className={cn(
@@ -97,7 +105,7 @@ export function Nav() {
               overDark ? "bg-ground text-ink" : "bg-ink text-ground"
             )}
           >
-            Book a call
+            {t("bookCall")}
           </a>
         </nav>
 
@@ -106,7 +114,7 @@ export function Nav() {
           type="button"
           className="relative z-50 md:hidden"
           aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? t("closeMenu") : t("openMenu")}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -117,7 +125,7 @@ export function Nav() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Menu"
+          aria-label={t("menuLabel")}
           className="fixed inset-0 z-40 flex flex-col justify-center gap-1 bg-ground px-6 md:hidden"
         >
           {site.navLinks.map((l) => (
@@ -130,12 +138,13 @@ export function Nav() {
               {l.label}
             </a>
           ))}
+          <LanguageSwitcher className="mt-6 text-lg" />
           <a
             href={site.bookingUrl}
             onClick={() => setOpen(false)}
             className="mt-8 inline-flex w-fit rounded-full bg-ink px-6 py-3.5 text-base font-medium text-ground"
           >
-            Book a call
+            {t("bookCall")}
           </a>
         </div>
       )}

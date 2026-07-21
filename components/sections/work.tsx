@@ -1,13 +1,20 @@
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
+import { getLocale, getTranslations } from "next-intl/server"
 import type { Project } from "@/content/work"
-import { projects } from "@/content/work"
+import { getProjects } from "@/content/work"
 import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import { ThemeScrollZone } from "@/components/motion/theme-scroll-zone"
 import { StickyStack } from "@/components/motion/sticky-stack"
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+  project,
+  liveLinkLabel,
+}: {
+  project: Project
+  liveLinkLabel: string
+}) {
   return (
     <article className="grid gap-8 rounded-[28px] border border-white/10 bg-[#111110] p-8 md:grid-cols-2 md:items-center md:gap-12 md:p-12">
       <div>
@@ -53,7 +60,7 @@ function ProjectCard({ project }: { project: Project }) {
             rel="noreferrer noopener"
             className="group/link mt-8 inline-flex items-center gap-2 text-sm text-ink-dark/70 transition-colors hover:text-accent"
           >
-            Live link
+            {liveLinkLabel}
             <ArrowUpRight
               size={15}
               aria-hidden="true"
@@ -77,14 +84,19 @@ function ProjectCard({ project }: { project: Project }) {
   )
 }
 
-export function Work() {
+export async function Work() {
+  const locale = await getLocale()
+  const projects = getProjects(locale)
+  const t = await getTranslations({ locale, namespace: "work" })
+  const tLabel = await getTranslations({ locale, namespace: "sectionLabels" })
+
   return (
     <ThemeScrollZone id="work" className="rounded-t-[40px] py-[var(--spacing-section)]">
       <Container>
-        <SectionLabel className="mb-12">latest work</SectionLabel>
+        <SectionLabel className="mb-12">{tLabel("latestWork")}</SectionLabel>
         <StickyStack>
           {projects.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
+            <ProjectCard key={p.slug} project={p} liveLinkLabel={t("liveLink")} />
           ))}
         </StickyStack>
       </Container>

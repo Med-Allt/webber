@@ -1,8 +1,12 @@
-import { site } from "@/content/site"
+import { getLocale } from "next-intl/server"
+import { getSite } from "@/content/site"
 import { Container } from "./container"
 import { Marquee } from "@/components/motion/marquee"
 
-export function Trust() {
+export async function Trust() {
+  const locale = await getLocale()
+  const site = getSite(locale)
+
   return (
     <section className="pb-[var(--spacing-section)]">
       <Container>
