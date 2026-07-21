@@ -54,8 +54,8 @@ fallback stack.
 - **Display:** General Sans Semibold at `clamp(2.5rem, 7vw, 6.5rem)`,
   `tracking-[-0.03em]`, `leading-[0.95]`.
 - **Body:** General Sans Regular, `1rem`–`1.125rem`, `leading-relaxed`, `--color-muted`.
-- **Section labels:** `< bracketed lowercase >` form, `0.75rem`, `tracking-[0.1em]`,
-  uppercase, `--color-accent`.
+- **Section labels:** `< bracketed lowercase >` form — rendered lowercase, never
+  uppercased — at `0.75rem`, `tracking-[0.1em]`, `--color-accent`.
 
 ### 2.3 Layout
 
