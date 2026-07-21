@@ -8,7 +8,7 @@ import {
   Shader,
   Swirl,
 } from "shaders/react"
-import { useMotionOk } from "./use-motion-ok"
+import { useReducedMotion } from "motion/react"
 import { cn } from "@/lib/utils"
 
 type Variant = "hero" | "deep"
@@ -47,13 +47,16 @@ export function ShaderField({
   variant?: Variant
   className?: string
 }) {
-  const motionOk = useMotionOk()
+  // This module is only ever loaded client-side (ssr:false), so the raw
+  // preference is safe here and avoids booting a GPU context we would
+  // immediately tear down.
+  const reduced = useReducedMotion()
   const [ready, setReady] = React.useState(false)
   const p = PALETTES[variant]
 
   // WebGPU/WebGL init is client-only and can fail on unsupported hardware.
   // Fading in on `onReady` avoids a hard flash of an unpainted canvas.
-  if (!motionOk) return null
+  if (reduced) return null
 
   return (
     <div
