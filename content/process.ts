@@ -15,53 +15,53 @@ const phases: Record<Locale, Phase[]> = {
       steps: [
         {
           title: "Kynningarsamtal",
-          body: "Frítt 30 mínútna samtal til að skilja markmið ykkar og ákveða hvort við séum rétta stofan fyrir verkefnið. Engin sölukynning.",
+          body: "Frítt 30 mínútna samtal þar sem við förum yfir fyrirtækið, markmiðin og hvert þú vilt stefna.",
         },
         {
-          title: "Fast tilboð",
-          body: "Þið fáið skriflegt umfang og lokatölu. Breytingar eru innifaldar. Engar óvæntar klukkustundagjaldskrár síðar meir.",
+          title: "Tillaga að verkefninu",
+          body: "Við leggjum fram skýra tillögu að umfangi, verði og tímaramma, svo þú vitir nákvæmlega hvað verkefnið felur í sér áður en vinnan hefst.",
         },
         {
-          title: "Samskiptaleiðir",
-          body: "Sameiginleg rás og beinn aðgangur að vinnuskránni, svo þið sjáið framvindu hvaða dag sem er í stað þess að bíða eftir áföngum.",
-        },
-      ],
-    },
-    {
-      name: "Framkvæmd",
-      steps: [
-        {
-          title: "Rannsókn",
-          body: "Við skoðum það sem fyrir er, tölum við fólkið sem selur vöruna ykkar, og komum okkur saman um hvað síðan þarf raunverulega að gera.",
-        },
-        {
-          title: "Uppbygging",
-          body: "Frásögn og vírramma fyrst. Við ákveðum hvað hver hluti á að segja áður en nokkur velur leturgerð.",
-        },
-        {
-          title: "Hönnun & smíði",
-          body: "Fullkláruð hönnun og framendasmíði fara fram samhliða, svo það sem þið samþykkið er það sem fer í loftið — ekki nálgun á það.",
-        },
-        {
-          title: "Breytingar",
-          body: "Við förum yfir vinnuna saman jafnóðum. Ekkert hámark á breytingum; við höldum áfram þar til allt er rétt.",
+          title: "Bein samskipti",
+          body: "Þú ert í beinu sambandi við okkur frá fyrsta degi og færð reglulegar upplýsingar um stöðu verkefnisins.",
         },
       ],
     },
     {
-      name: "Afhending",
+      name: "Vinnuferlið",
       steps: [
         {
-          title: "Útgáfa",
-          body: "Við setjum upp á ykkar innviði og tengjum lénið. Þið eigið hýsingarsafnið og alla reikninga.",
+          title: "Stefna",
+          body: "Við förum yfir núverandi stöðu, markhópinn og markmiðin og mótum skýra stefnu fyrir næstu skref.",
         },
         {
-          title: "Yfirferð",
-          body: "Upptekin yfirferð sem sýnir hvernig á að breyta efni, bæta við síðum og gefa út, svo teymið ykkar sé ekki háð okkur.",
+          title: "Efni og uppbygging",
+          body: "Við skipuleggjum efnið, mótum skilaboðin og ákveðum hvernig fyrirtækið birtist á vefnum og í auglýsingum.",
         },
         {
-          title: "Eftirfylgni",
-          body: "Við fylgjum eftir útgáfu til að sjá hvernig síðan stendur sig miðað við markmiðin sem sett voru í byrjun.",
+          title: "Hönnun og útfærsla",
+          body: "Við hönnum og setjum upp vefsíðuna, auglýsingarnar og annað efni með áherslu á skýra framsetningu, góða upplifun og sterka heild.",
+        },
+        {
+          title: "Yfirferð og breytingar",
+          body: "Þú færð að sjá vinnuna jafnóðum og við förum saman yfir það sem þarf að laga þar til allt er komið á sinn stað.",
+        },
+      ],
+    },
+    {
+      name: "Birting og áframhald",
+      steps: [
+        {
+          title: "Birting og uppsetning",
+          body: "Við setjum vefsíðuna í loftið og göngum frá uppsetningu á auglýsingum í Meta, Google og öðrum viðeigandi miðlum.",
+        },
+        {
+          title: "Umsjón og uppfærslur",
+          body: "Við sjáum um áframhaldandi breytingar og uppfærslur, hvort sem það eru nýjar vörur, bloggfærslur, efni eða auglýsingar.",
+        },
+        {
+          title: "Áframhaldandi þjónusta",
+          body: "Við sjáum um að þróa vefsíðuna og markaðssetninguna áfram, svo hvort tveggja haldist í takt við fyrirtækið og markmiðin.",
         },
       ],
     },
