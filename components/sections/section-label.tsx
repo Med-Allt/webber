@@ -8,7 +8,7 @@ export function SectionLabel({
   className?: string
 }) {
   return (
-    <p className={cn("text-xs lowercase tracking-[0.14em] text-accent", className)}>
+    <p className={cn("text-sm lowercase tracking-[0.14em] text-accent", className)}>
       {"< "}
       {children}
       {" >"}
