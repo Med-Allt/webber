@@ -1,4 +1,3 @@
-import Image from "next/image"
 import type { IconType } from "react-icons"
 import {
   SiMailchimp,
@@ -11,18 +10,28 @@ import {
   SiGoogleanalytics,
   SiGoogleads,
   SiFigma,
+  SiWebflow,
+  SiNotion,
+  SiGooglesearchconsole,
+  SiSemrush,
+  SiMixpanel,
+  SiTypescript,
+  SiTailwindcss,
 } from "react-icons/si"
+import {
+  TbBrandAdobePhotoshop,
+  TbBrandAdobeIllustrator,
+} from "react-icons/tb"
 import { getTranslations } from "next-intl/server"
 import { Container } from "./container"
 import { Marquee } from "@/components/motion/marquee"
 import { cn } from "@/lib/utils"
 
 const ICON_CLASS =
-  "size-8 md:size-9 text-muted/55 transition-colors duration-300 group-hover:text-(--tool-color)"
+  "size-8 md:size-9 text-muted/55 transition-colors duration-300 group-hover:text-foreground"
 
 type Tool = {
   name: string
-  color: string
   Icon?: IconType
   image?: string
   label?: string
@@ -30,37 +39,71 @@ type Tool = {
 }
 
 const TOOLS: Tool[] = [
-  { name: "Mailchimp", color: "#FFE01B", Icon: SiMailchimp, label: "Mailchimp", layout: "stacked" },
+  { name: "Mailchimp", Icon: SiMailchimp, label: "Mailchimp", layout: "stacked" },
   {
     name: "Klaviyo",
-    color: "#000000",
     image: "/brand/logos/klaviyo.png",
     label: "Klaviyo",
     layout: "inline",
   },
-  { name: "Meta Business Suite", color: "#0467DF", Icon: SiMeta, label: "Meta", layout: "stacked" },
-  { name: "Shopify", color: "#7AB55C", Icon: SiShopify, label: "Shopify", layout: "inline" },
-  { name: "Framer", color: "#0055FF", Icon: SiFramer, label: "Framer", layout: "stacked" },
-  { name: "Next.js", color: "#000000", Icon: SiNextdotjs, label: "Next.js", layout: "stacked" },
-  { name: "Vercel", color: "#000000", Icon: SiVercel, label: "Vercel", layout: "stacked" },
-  { name: "React", color: "#61DAFB", Icon: SiReact, label: "React", layout: "stacked" },
+  { name: "Meta Business Suite", Icon: SiMeta, label: "Meta", layout: "stacked" },
+  { name: "Shopify", Icon: SiShopify, label: "Shopify", layout: "inline" },
+  { name: "Framer", Icon: SiFramer, label: "Framer", layout: "stacked" },
+  { name: "Next.js", Icon: SiNextdotjs, label: "Next.js", layout: "stacked" },
+  { name: "Vercel", Icon: SiVercel, label: "Vercel", layout: "stacked" },
+  { name: "React", Icon: SiReact, label: "React", layout: "stacked" },
   {
     name: "Google Analytics",
-    color: "#E37400",
     Icon: SiGoogleanalytics,
     label: "Google Analytics",
     layout: "stacked",
   },
-  { name: "Google Ads", color: "#4285F4", Icon: SiGoogleads, label: "Google Ads", layout: "stacked" },
-  { name: "Figma", color: "#F24E1E", Icon: SiFigma, label: "Figma", layout: "stacked" },
+  { name: "Google Ads", Icon: SiGoogleads, label: "Google Ads", layout: "stacked" },
+  { name: "Figma", Icon: SiFigma, label: "Figma", layout: "stacked" },
+  { name: "Webflow", Icon: SiWebflow, label: "Webflow", layout: "stacked" },
+  {
+    name: "Adobe Photoshop",
+    Icon: TbBrandAdobePhotoshop,
+    label: "Photoshop",
+    layout: "stacked",
+  },
+  {
+    name: "Adobe Illustrator",
+    Icon: TbBrandAdobeIllustrator,
+    label: "Illustrator",
+    layout: "stacked",
+  },
+  {
+    name: "Canva",
+    image: "/brand/logos/canva.svg",
+    label: "Canva",
+    layout: "stacked",
+  },
+  { name: "Notion", Icon: SiNotion, label: "Notion", layout: "stacked" },
+  {
+    name: "Google Search Console",
+    Icon: SiGooglesearchconsole,
+    label: "Search Console",
+    layout: "stacked",
+  },
+  { name: "Semrush", Icon: SiSemrush, label: "Semrush", layout: "stacked" },
+  {
+    name: "Ahrefs",
+    image: "/brand/logos/ahrefs.svg",
+    label: "Ahrefs",
+    layout: "stacked",
+  },
+  { name: "Mixpanel", Icon: SiMixpanel, label: "Mixpanel", layout: "stacked" },
+  { name: "TypeScript", Icon: SiTypescript, label: "TypeScript", layout: "stacked" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, label: "Tailwind CSS", layout: "stacked" },
 ]
 
 function ToolMark({ tool }: { tool: Tool }) {
   if (tool.image) {
-    // Klaviyo's mark is solid black — no brand hue to swap on hover, so the
-    // reveal is an opacity lift instead of a color change like the others.
+    // Raster/SVG marks stay black — hover is an opacity lift, not a hue change.
     return (
-      <Image
+      // eslint-disable-next-line @next/next/no-img-element -- local brand marks include SVG
+      <img
         src={tool.image}
         alt=""
         aria-hidden="true"
@@ -76,19 +119,16 @@ function ToolMark({ tool }: { tool: Tool }) {
 }
 
 function ToolItem({ tool }: { tool: Tool }) {
-  const colorVar = { "--tool-color": tool.color } as React.CSSProperties
-
   return (
     <span
       className={cn(
         "group flex items-center",
         tool.layout === "stacked" ? "flex-col gap-1.5" : "gap-2.5"
       )}
-      style={colorVar}
     >
       <ToolMark tool={tool} />
       {tool.label ? (
-        <span className="text-sm font-medium text-muted/55 transition-colors duration-300 group-hover:text-(--tool-color)">
+        <span className="text-sm font-medium text-muted/55 transition-colors duration-300 group-hover:text-foreground">
           {tool.label}
         </span>
       ) : (
