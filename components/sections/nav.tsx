@@ -68,14 +68,26 @@ export function Nav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        overDark && "text-ink-dark",
-        scrolled &&
-          (overDark
-            ? "border-b border-white/10 bg-ground-dark/60 backdrop-blur-xl"
-            : "border-b border-hairline bg-ground/70 backdrop-blur-xl")
+        overDark && "text-ink-dark"
       )}
     >
-      <Container className="flex h-20 items-center justify-between">
+      {/* Blurred backdrop lives on its own layer rather than the header
+          itself — backdrop-blur is a filter, and a filter on the header
+          would make it the containing block for the mobile menu's
+          `fixed inset-0`, shrinking that overlay down to the header's own
+          height instead of the full viewport. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-0 -z-10 transition-colors duration-500",
+          scrolled &&
+            (overDark
+              ? "border-b border-white/10 bg-ground-dark/60 backdrop-blur-xl"
+              : "border-b border-hairline bg-ground/70 backdrop-blur-xl")
+        )}
+      />
+
+      <Container className="relative flex h-20 items-center justify-between">
         <a href="#top" className="shrink-0">
           <Image
             src="/brand/med-allt-logo.png"
