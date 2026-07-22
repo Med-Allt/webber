@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 import { getSite } from "@/content/site"
@@ -75,9 +76,15 @@ export function Nav() {
       )}
     >
       <Container className="flex h-20 items-center justify-between">
-        <a href="#top" className="text-lg font-semibold tracking-[-0.02em]">
-          {site.brand}
-          <span className="text-accent">.</span>
+        <a href="#top" className="shrink-0">
+          <Image
+            src="/brand/med-allt-logo.png"
+            alt={site.brand}
+            width={202}
+            height={87}
+            priority
+            className={cn("h-7 w-auto transition-[filter] duration-500", overDark && "invert hue-rotate-180")}
+          />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">

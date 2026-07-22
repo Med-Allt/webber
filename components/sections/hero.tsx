@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { getLocale } from "next-intl/server"
 import { getSite } from "@/content/site"
@@ -30,12 +31,14 @@ export async function Hero() {
       />
       <Container className="relative z-30 flex flex-col items-center text-center">
         <Reveal>
-          <div
-            aria-hidden="true"
-            className="mb-14 flex size-16 items-center justify-center rounded-full bg-ink text-ground shadow-[0_18px_40px_-12px_rgba(10,10,10,0.45)]"
-          >
-            <span className="text-xl font-semibold">W</span>
-          </div>
+          <Image
+            src="/brand/med-allt-logo.png"
+            alt={site.brand}
+            width={202}
+            height={87}
+            priority
+            className="mb-14 h-11 w-auto md:h-12"
+          />
         </Reveal>
 
         <Reveal delay={0.08}>
