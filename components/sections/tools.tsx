@@ -17,6 +17,7 @@ import {
   SiMixpanel,
   SiTypescript,
   SiTailwindcss,
+  SiWordpress,
 } from "react-icons/si"
 import {
   TbBrandAdobePhotoshop,
@@ -48,6 +49,7 @@ const TOOLS: Tool[] = [
   },
   { name: "Meta Business Suite", Icon: SiMeta, label: "Meta", layout: "stacked" },
   { name: "Shopify", Icon: SiShopify, label: "Shopify", layout: "inline" },
+  { name: "WordPress", Icon: SiWordpress, label: "WordPress", layout: "stacked" },
   { name: "Framer", Icon: SiFramer, label: "Framer", layout: "stacked" },
   { name: "Next.js", Icon: SiNextdotjs, label: "Next.js", layout: "stacked" },
   { name: "Vercel", Icon: SiVercel, label: "Vercel", layout: "stacked" },
