@@ -145,7 +145,7 @@ export function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label={t("menuLabel")}
-          className="fixed inset-0 z-40 flex flex-col justify-center gap-1 bg-ground px-6 md:hidden"
+          className="fixed inset-0 z-40 flex flex-col justify-center gap-1 bg-ground px-6 text-ink md:hidden"
         >
           {site.navLinks.map((l) => (
             <a
