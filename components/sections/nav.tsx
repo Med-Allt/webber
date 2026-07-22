@@ -145,7 +145,10 @@ export function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label={t("menuLabel")}
-          className="fixed inset-0 z-40 flex flex-col justify-center gap-1 bg-ground px-6 text-ink md:hidden"
+          className={cn(
+            "fixed inset-0 z-40 flex flex-col justify-center gap-1 px-6 md:hidden",
+            overDark ? "bg-ground-dark text-ink-dark" : "bg-ground text-ink"
+          )}
         >
           {site.navLinks.map((l) => (
             <a
@@ -161,7 +164,10 @@ export function Nav() {
           <a
             href={site.bookingUrl}
             onClick={() => setOpen(false)}
-            className="mt-8 inline-flex w-fit rounded-full bg-ink px-6 py-3.5 text-base font-medium text-ground"
+            className={cn(
+              "mt-8 inline-flex w-fit rounded-full px-6 py-3.5 text-base font-medium",
+              overDark ? "bg-ground text-ink" : "bg-ink text-ground"
+            )}
           >
             {t("bookCall")}
           </a>
