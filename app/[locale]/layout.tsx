@@ -4,11 +4,17 @@ import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
 import { hasLocale } from "next-intl"
 import { routing } from "@/i18n/routing"
+import { siteUrl } from "@/content/site"
 import { generalSans } from "../fonts"
 import "../globals.css"
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
+}
+
+/** Path a locale is served at — the default locale has no prefix ("as-needed"). */
+function localePath(locale: string) {
+  return locale === routing.defaultLocale ? "/" : `/${locale}`
 }
 
 export async function generateMetadata({
@@ -18,9 +24,32 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "metadata" })
+  const title = t("title")
+  const description = t("description")
+
   return {
-    title: t("title"),
-    description: t("description"),
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    alternates: {
+      canonical: localePath(locale),
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, localePath(l)]),
+      ),
+    },
+    openGraph: {
+      type: "website",
+      siteName: "Með Allt",
+      locale,
+      url: localePath(locale),
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   }
 }
 

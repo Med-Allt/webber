@@ -6,6 +6,9 @@
 
 import { routing, type Locale } from "@/i18n/routing"
 
+/** Canonical origin the site is served from. Used to build absolute metadata URLs. */
+export const siteUrl = "https://www.medallt.is"
+
 export type NavLink = { label: string; href: string }
 
 export type SiteContent = {
@@ -20,7 +23,7 @@ const site: Record<Locale, SiteContent> = {
   is: {
     brand: "Með Allt",
     email: "medallt@medallt.is",
-    bookingUrl: "https://cal.com/webber/intro",
+    bookingUrl: "https://www.cal.eu/medallt/kynningarsamtal",
     navLinks: [
       { label: "Heim", href: "#top" },
       { label: "Um Okkur", href: "#process" },
@@ -36,7 +39,7 @@ const site: Record<Locale, SiteContent> = {
   en: {
     brand: "Með Allt",
     email: "medallt@medallt.is",
-    bookingUrl: "https://cal.com/webber/intro",
+    bookingUrl: "https://www.cal.eu/medallt/kynningarsamtal",
     navLinks: [
       { label: "Home", href: "#top" },
       { label: "About Us", href: "#process" },
