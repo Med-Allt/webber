@@ -13,32 +13,32 @@ const faqItems: Record<Locale, FaqItem[]> = {
     {
       question: "Hversu langan tíma tekur verkefni?",
       answer:
-        "Ein síða tekur um viku, heil margra síðna vefsíða um þrjár vikur og samsett vörumerkja- og vefverkefni um fimm vikur. Þú færð fyrstu drög innan 72 klukkustunda frá byrjun í öllum tilvikum.",
+        "Tímalengdin fer eftir umfangi verkefnisins. Flestar vefsíður taka á bilinu 2–6 vikur, en stærri verkefni geta tekið lengri tíma. Við setjum alltaf skýran tímaramma áður en verkefnið hefst.",
     },
     {
-      question: "Hvað þarfið þið frá okkur til að byrja?",
+      question: "Hvað kostar að láta gera vefsíðu?",
       answer:
-        "Samtal um markmið ykkar, hvaða vörumerkjaefni sem þegar er til, og einn aðila með umboð til að samþykkja vinnu. Vantar texta? Það er í lagi — við drögum hann saman og þið yfirfarið.",
+        "Verðið fer eftir umfangi, markmiðum og þeim lausnum sem henta verkefninu best. Eftir kynningarsamtal færð þú skýra tillögu með verði og umfangi áður en vinnan hefst.",
     },
     {
-      question: "Hvernig virkar verðlagning?",
+      question: "Bjóðið þið upp á markaðssetningu og auglýsingar?",
       answer:
-        "Föst tilboð áður en við byrjum, byggð á umfangi frekar en klukkustundum. Breytingar eru innifaldar. Ef umfang breytist í raun endurmetum við tilboðið áður en vinnan hefst, aldrei eftir á.",
+        "Já. Við sjáum um stafræna markaðssetningu, þar á meðal auglýsingar á Meta (Facebook & Instagram) og Google, ásamt stefnumótun, efnisgerð og áframhaldandi þróun þegar þess er þörf.",
     },
     {
-      question: "Hversu margar breytingar fáum við?",
+      question: "Hvaða kerfi og lausnir vinnið þið með?",
       answer:
-        "Ekkert hámark. Við förum yfir vinnuna saman jafnóðum í stað þess að safna endurgjöf fyrir áfangaskil, sem er ástæðan fyrir því að endalausar breytingahringrásir eiga sér ekki stað í reynd.",
+        "Við vinnum meðal annars með Framer, Shopify, WordPress og sérsniðnar lausnir í Next.js og React. Við veljum alltaf þá lausn sem hentar fyrirtækinu og markmiðunum best.",
     },
     {
-      question: "Getum við breytt síðunni sjálf á eftir?",
+      question: "Bjóðið þið upp á umsjón og uppfærslur á vefsíðunni eftir afhendingu?",
       answer:
-        "Já. Við setjum upp CMS þar sem það á við og tökum upp yfirferð sem nær yfir efnisbreytingar, nýjar síður og útgáfu. Þið eigið hýsingarsafnið og alla reikninga.",
+        "Já. Við sjáum um áframhaldandi umsjón, uppfærslur og breytingar eftir þörfum, hvort sem um er að ræða nýtt efni, bloggfærslur, vörur í netverslun eða aðrar viðbætur.",
     },
     {
-      question: "Vinnið þið með okkur eftir að síðan fer í loftið?",
+      question: "Hvernig hefst samstarfið?",
       answer:
-        "Við fylgjum eftir eftir útgáfu sem hluta af hverju verkefni. Fyrir utan það tökum við að okkur viðvarandi vinnu fyrir fáa valda viðskiptavini í einu.",
+        "Samstarfið hefst á stuttu og óskuldbindandi kynningarsamtali þar sem við förum yfir fyrirtækið, markmiðin og þarfirnar. Að því loknu leggjum við fram tillögu að verkefninu og getum hafið vinnu þegar þú ert tilbúin(n).",
     },
   ],
   en: [

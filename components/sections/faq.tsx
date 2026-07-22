@@ -26,6 +26,8 @@ export async function Faq() {
             {t("heading")}
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted">
+            {t("bodyLead")}
+            <br />
             {t("bodyPrefix")}{" "}
             <a
               href={`mailto:${site.email}`}

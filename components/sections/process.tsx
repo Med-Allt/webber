@@ -3,6 +3,7 @@ import { getPhases } from "@/content/process"
 import { Container } from "./container"
 import { SectionLabel } from "./section-label"
 import { Reveal } from "@/components/motion/reveal"
+import { ThemeScrollZone } from "@/components/motion/theme-scroll-zone"
 
 export async function Process() {
   const locale = await getLocale()
@@ -11,7 +12,7 @@ export async function Process() {
   const tLabel = await getTranslations({ locale, namespace: "sectionLabels" })
 
   return (
-    <section id="process" className="py-[var(--spacing-section)]">
+    <ThemeScrollZone id="process" className="rounded-t-[40px] py-[var(--spacing-section)]">
       <Container>
         <SectionLabel className="mb-12">{tLabel("process")}</SectionLabel>
 
@@ -25,7 +26,7 @@ export async function Process() {
           {phases.map((phase, pi) => (
             <div
               key={phase.name}
-              className="grid gap-8 border-t border-hairline pt-8 md:grid-cols-[220px_1fr]"
+              className="grid gap-8 border-t border-white/10 pt-8 md:grid-cols-[220px_1fr]"
             >
               <Reveal>
                 <h3 className="text-xl font-semibold tracking-[-0.02em]">
@@ -42,7 +43,7 @@ export async function Process() {
                         {String(si + 1).padStart(2, "0")}
                       </span>
                       <h4 className="mt-3 text-lg font-medium">{step.title}</h4>
-                      <p className="mt-2 text-base leading-relaxed text-muted">
+                      <p className="mt-2 text-base leading-relaxed text-ink-dark/60">
                         {step.body}
                       </p>
                     </div>
@@ -53,6 +54,6 @@ export async function Process() {
           ))}
         </div>
       </Container>
-    </section>
+    </ThemeScrollZone>
   )
 }

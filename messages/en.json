@@ -10,19 +10,21 @@
     "menuLabel": "Menu"
   },
   "sectionLabels": {
-    "letItHappen": "let it happen",
+    "letItHappen": "let's start with a coffee",
     "questions": "questions",
     "process": "the process",
     "whatWeDo": "what we do",
     "latestWork": "latest work"
   },
   "cta": {
-    "heading": "Ready to build something worth looking at?",
-    "bodyPrefix": "Book a free discovery session, or email us at"
+    "heading": "Great projects start with a good conversation.",
+    "body": "One cup of coffee can be the start of a clearer strategy, a stronger brand, and better results.",
+    "sub": "Vertu með allt á hreinu."
   },
   "faq": {
     "heading": "Frequently asked questions",
-    "bodyPrefix": "Anything else, email us at"
+    "bodyLead": "Got something else on your mind?",
+    "bodyPrefix": "Email us at"
   },
   "process": {
     "heading": "Simple and transparent at every step, from zero to live."
@@ -31,7 +33,7 @@
     "liveLink": "Live link",
     "inProgress": "In Progress"
   },
-  "localTime": {
-    "location": "London"
+  "tools": {
+    "caption": "Systems we work with"
   }
 }

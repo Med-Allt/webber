@@ -1,7 +1,8 @@
 import { setRequestLocale } from "next-intl/server"
 import { Nav } from "@/components/sections/nav"
 import { Hero } from "@/components/sections/hero"
-import { Trust } from "@/components/sections/trust"
+import { Tools } from "@/components/sections/tools"
+import { HeroToolsBand } from "@/components/sections/hero-tools-band"
 import { Work } from "@/components/sections/work"
 import { Services } from "@/components/sections/services"
 import { Process } from "@/components/sections/process"
@@ -20,8 +21,10 @@ export default async function Page({
     <>
       <Nav />
       <main>
-        <Hero />
-        <Trust />
+        <HeroToolsBand>
+          <Hero />
+          <Tools />
+        </HeroToolsBand>
         <Work />
         <Services />
         <Process />

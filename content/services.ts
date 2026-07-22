@@ -9,7 +9,7 @@ import { routing, type Locale } from "@/i18n/routing"
 export type Pillar = { label: string; title: string; body: string }
 
 const servicesIntro: Record<Locale, string> = {
-  is: "Við sjáum um allan bogann — vörumerki, viðmót og útfærslu — svo ekkert týnist á milli þeirra sem hanna og þeirra sem smíða.",
+  is: "Við sameinum vefsíður, markaðssetningu og vörumerkjagerð í eina skýra heild.",
   en: "We handle the whole arc — identity, interface, and implementation — so nothing gets lost between the people who design it and the people who build it.",
 }
 
@@ -17,18 +17,18 @@ const pillars: Record<Locale, Pillar[]> = {
   is: [
     {
       label: "01",
-      title: "Vörumerki",
-      body: "Nafngift, merkjakerfi, letur og litir, og leiðbeiningar sem halda öllu samræmdu eftir að við skilum af okkur. Við hönnum vörumerki sem lifa af raunverulega notkun.",
+      title: "Vefsíður",
+      body: "Við hönnum og smíðum vefsíður sem eru hraðar, notendavænar og byggðar með skýrt markmið. Við vinnum meðal annars með Framer, Shopify, WordPress og sérsniðnar lausnir í Next.js og React — allt eftir þörfum verkefnisins.",
     },
     {
       label: "02",
-      title: "Vefhönnun",
-      body: "Uppbygging, frásögn og viðmót. Við hönnum hvert brotamark og hvert ástand, og frumgerðum hreyfinguna svo þið samþykkið það raunverulega frekar en kyrra mynd af því.",
+      title: "Markaðssetning",
+      body: "Við hjálpum fyrirtækjum að ná til rétta fólksins með markvissri stafrænni markaðssetningu. Frá stefnumótun og efnisgerð yfir í auglýsingar, mælingar og áframhaldandi þróun.",
     },
     {
       label: "03",
-      title: "Þróun",
-      body: "Framleiðslutilbúin framendasmíði í Next.js, hröð sjálfgefið og aðgengileg sjálfgefið. CMS tengingar þar sem þið þurfið að birta án okkar.",
+      title: "Vörumerki",
+      body: "Við mótum vörumerki sem eru skýr, samræmd og auðþekkjanleg. Frá stefnumótun og sjónrænni ásýnd til merkis, lita, leturs og annarra þátta sem styrkja ímynd fyrirtækisins.",
     },
   ],
   en: [

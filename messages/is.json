@@ -10,28 +10,30 @@
     "menuLabel": "Valmynd"
   },
   "sectionLabels": {
-    "letItHappen": "látum þetta gerast",
+    "letItHappen": "byrjum á einum kaffibolla",
     "questions": "spurningar",
     "process": "ferlið",
-    "whatWeDo": "það sem við gerum",
+    "whatWeDo": "vefsíður, markaðssetning og vörumerki — allt á hreinu.",
     "latestWork": "nýleg verkefni"
   },
   "cta": {
-    "heading": "Eigum við að byggja eitthvað sem er þess virði að skoða?",
-    "bodyPrefix": "Bókaðu frítt kynningarsamtal, eða sendu okkur tölvupóst á"
+    "heading": "Frábær verkefni byrja á góðu samtali.",
+    "body": "Einn kaffibolli getur verið upphafið að skýrari stefnu, sterkari ásýnd og betri árangri.",
+    "sub": "Vertu með allt á hreinu."
   },
   "faq": {
     "heading": "Algengar spurningar",
-    "bodyPrefix": "Eitthvað annað? Sendu okkur tölvupóst á"
+    "bodyLead": "Er eitthvað annað sem þú hefur í huga?",
+    "bodyPrefix": "Sendu okkur tölvupóst á"
   },
   "process": {
-    "heading": "Einfalt og gagnsætt í hverju skrefi, frá byrjun til birtingar."
+    "heading": "Einfalt ferli. Skýr samskipti. Allt á hreinu."
   },
   "work": {
     "liveLink": "Skoða síðu",
     "inProgress": "Í vinnslu"
   },
-  "localTime": {
-    "location": "London"
+  "tools": {
+    "caption": "Kerfin sem við vinnum með"
   }
 }

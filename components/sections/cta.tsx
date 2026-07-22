@@ -6,7 +6,6 @@ import { SectionLabel } from "./section-label"
 import { ThemeScrollZone } from "@/components/motion/theme-scroll-zone"
 import { MagneticButton } from "@/components/motion/magnetic-button"
 import { ShaderFieldLazy } from "@/components/motion/shader-field-lazy"
-import { LocalTime } from "./local-time"
 
 export async function Cta() {
   const locale = await getLocale()
@@ -32,17 +31,12 @@ export async function Cta() {
         </h2>
 
         <p className="mt-8 max-w-[52ch] text-base leading-relaxed text-ink-dark/55">
-          {t("bodyPrefix")}{" "}
-          <a
-            href={`mailto:${site.email}`}
-            className="text-ink-dark underline underline-offset-4"
-          >
-            {site.email}
-          </a>
-          .
+          {t("body")}
         </p>
 
-        <div className="mt-12">
+        <p className="mt-12 text-sm text-ink-dark/55">{t("sub")}</p>
+
+        <div className="mt-4">
           <MagneticButton
             href={site.bookingUrl}
             className="bg-ground text-ink hover:bg-accent hover:text-ground"
@@ -56,22 +50,13 @@ export async function Cta() {
         </div>
 
         <footer className="mt-28 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8 text-sm text-ink-dark/40">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
-            <p>© {site.brand}, 2026</p>
-            <LocalTime className="flex items-center" />
-          </div>
-          <ul className="flex gap-6">
-            {site.socials.map((s) => (
-              <li key={s.label}>
-                <a
-                  href={s.href}
-                  className="transition-colors hover:text-ink-dark"
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <p>© {site.brand}, 2026</p>
+          <a
+            href={`mailto:${site.email}`}
+            className="transition-colors hover:text-ink-dark"
+          >
+            {site.email}
+          </a>
         </footer>
       </Container>
     </ThemeScrollZone>
