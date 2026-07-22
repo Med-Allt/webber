@@ -28,7 +28,7 @@ const clients = ["CGS-team", "Hoverla Soft", "Mlynivska Chaika"]
 
 const site: Record<Locale, SiteContent> = {
   is: {
-    brand: "Webber",
+    brand: "Með Allt",
     email: "hey@webber.studio",
     bookingUrl: "https://cal.com/webber/intro",
     navLinks: [
@@ -39,15 +39,15 @@ const site: Record<Locale, SiteContent> = {
     ],
     socials,
     hero: {
-      headline: "Við byggjum vörumerki sem sýna að þeim er alvara",
-      sub: "Webber er hönnunar- og þróunarstofa. Við mótum vörumerki, hönnum vefsíður og skilum þeim tilbúnum — svo sprotafyrirtæki hætta að líta út eins og sprotafyrirtæki.",
-      cta: "Bóka kynningarsamtal",
+      headline: "Allt sem fyrirtækið þitt þarf á netinu",
+      sub: "Vertu með allt á hreinu.",
+      cta: "Bóka Fund",
       trust: "Treyst af teymum sem klára verkefni",
     },
     clients,
   },
   en: {
-    brand: "Webber",
+    brand: "Með Allt",
     email: "hey@webber.studio",
     bookingUrl: "https://cal.com/webber/intro",
     navLinks: [
@@ -58,9 +58,9 @@ const site: Record<Locale, SiteContent> = {
     ],
     socials,
     hero: {
-      headline: "We build brands that look like they mean it",
-      sub: "Webber is a design and development studio. We shape identities, design websites, and ship them — so early-stage teams stop looking early-stage.",
-      cta: "Book an intro call",
+      headline: "Everything your business needs online",
+      sub: "Vertu með allt á hreinu.",
+      cta: "Book a Call",
       trust: "Trusted by teams who ship",
     },
     clients,
